@@ -14,28 +14,53 @@
 //     PRINT sum
 //     PRINT average
 
-let num = "";
-let isEmpty;
-let isNan;
-let zeroMinus;
-let count = 0;
+///////////////// DRAFT ///////////////////////////
+// let num = "";
+// let isEmpty;
+// let isNan;
+// let zeroMinus;
+// let count = 0;
+// let sum = 0;
+// let average;
+
+// do {
+//   num = prompt("Enter a number") || "";
+//   isEmpty = num.trim() === "";
+//   isNan = isNaN(num);
+//   zeroMinus = num <= 0;
+
+//   if (num != isEmpty && num != isNan && num != zeroMinus) {
+//     num;
+//   }
+
+//   sum += +num;
+//   average = sum / count;
+//   count++;
+// } while (num != isEmpty && num != isNan && num != zeroMinus);
+
+//////////////////////////////////////////////////////
+
 let sum = 0;
-let average;
+let count = 0;
 
 do {
-  num = prompt("Enter a number") || "";
-  isEmpty = num.trim() === "";
-  isNan = isNaN(num);
-  zeroMinus = num <= 0;
+  const input = prompt("Enter a number");
 
-  if (num != isEmpty && num != isNan && num != zeroMinus) {
-    num;
+  if (input === null || input.trim() === "") {
+    break; // Exit the loop if the input is empty or canceled
   }
 
-  sum += +num;
-  average = sum / count;
-  count++;
-} while (num != isEmpty && num != isNan && num != zeroMinus);
+  const num = +input;
 
-console.log(sum);
-console.log(average);
+  if (isNaN(num) || num <= 0) {
+    break; // Exit the loop if the input is not a valid number or is less than or equal to 0
+  }
+
+  sum += num;
+  count++;
+} while (true);
+
+const average = count > 0 ? sum / count : 0;
+
+console.log("Sum:", sum);
+console.log("Average:", average);
